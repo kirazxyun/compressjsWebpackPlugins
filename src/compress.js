@@ -18,6 +18,6 @@ CompressjsWebpackPlugin.prototype.apply = function(compiler) {
       console.log('asset are being optimized.');
     });
   });
-}
+};
 
 module.exports = CompressjsWebpackPlugin; 
