@@ -1,0 +1,31 @@
+{
+  "name": "compress-js-webpack-plugins",
+  "version": "1.0.0",
+  "description": "webpack js压缩插件",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirazxyun/compressjsWebpackPlugins.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "kira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirazxyun/compressjsWebpackPlugins/issues"
+  },
+  "homepage": "https://github.com/kirazxyun/compressjsWebpackPlugins#readme",
+  "dependencies": {
+    "uglify-es": "^3.1.3",
+    "webpack-sources": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.0.5"
+  }
+}
