@@ -20,8 +20,7 @@ class CompressjsWebpackPlugin {
         
         const result = UglifyJS.minify(content);
         if(result.error) return;
-
-        content = UglifyJS.minify(content);
+        
         assets[file] = new RawSource(result.code);
       });
       // 功能完成后调用webpack提供的回调

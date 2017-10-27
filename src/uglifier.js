@@ -1,34 +1,18 @@
-const ModuleFilenameHelpers = require('webpack').ModuleFilenameHelpers;
-const workerFarm = require('worker-farm');
-const pify = require('pify');
-const tmpFile = require('./tmp-file');
-const worker = require('./worker');
-const TEST_REG = /\.js$/i;
+const workerFarm = require('worker-farm')
+const pify = require('pify')
+const worker = require('./worker')
+const TEST_REG = /\.js$/i
 class uglifier {
   constructor() {
   }
 
   process(compilation) {
-    this.assetsHash = compilation.assets;
-    
-    const assets = Object.keys(this.assetsHash).filter(ModuleFilenameHelpers.matchObject.bind(null, {
-      test: TEST_REG
-    }));
-    const farm = workerFarm({
-      autoStart: true,
-      maxCoucurrentCllasPerWorker: 1,
-      maxConcurrentWorkers: this.workerCount(),
-      maxRetries: 2
-    }, new worker(), ['processMessage']);
-    const minify = pity(farm.processMessage);
+    const assetsHash = compilation.assets
+    const minify = this.getMinify();
     const minificationPromises = assets.map((assetName) => {
-      const asset = assetHash[assetName];
-      const tmpFileName = tmpFile.create(JSON.stringify({
-        assetName,
-        source: asset.source()
-      }));
+      const asset = assetHash[assetName]
 
-      return minify(tmpFileName)
+      return minify(asset)
               .then(() => {
                 const content = tmpFile.read(tmpFileName);
                 const msg = JSON.parse(content);
@@ -46,7 +30,11 @@ class uglifier {
               workerFarm.end();
             });
   }
-  workerCount() {}
+
+  getMinify() {
+    const farm = workerFarm(require.resolve('./worker'))
+    return pity(farm);
+  }
 }
 
 module.exports = new uglifier();

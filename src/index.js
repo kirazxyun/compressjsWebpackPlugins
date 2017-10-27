@@ -1,11 +1,11 @@
-const uglifier = require('./uglifier');
+const workers = require('./workers');
 class CompressjsWebpackPlugin {
   constructor(options = {}) {
   }
   apply(compiler) {
     compiler.plugin('compilation', (compilation) => {
       compilation.plugin('optimize-chunk-assets', (chunks, callback) => {
-        uglifier.process(compilation).then(() => {
+        workers(compilation).then(() => {
           callback();
         });
       });
