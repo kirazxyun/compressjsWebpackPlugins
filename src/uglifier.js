@@ -38,6 +38,7 @@ function processAssets(compilation, options) {
     const tmpFileName = tmpFile.create(JSON.stringify({
       assetName,
       source: asset.source(),
+      options,
       map: useSourceMaps ? asset.map() : null
     }))
 

@@ -4,6 +4,7 @@
   "description": "webpack js压缩插件",
   "main": "index.js",
   "scripts": {
+    "start": "webpack",
     "build": "cross-env NODE_ENV=production babel src -d dist"
   },
   "repository": {

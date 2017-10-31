@@ -5,7 +5,7 @@ class CompressjsWebpackPlugin {
   apply(compiler) {
     compiler.plugin('compilation', (compilation) => {
       compilation.plugin('optimize-chunk-assets', (chunks, callback) => {
-        workers(compilation).then(() => {
+        workers.process(compilation).then(() => {
           callback();
         });
       });
