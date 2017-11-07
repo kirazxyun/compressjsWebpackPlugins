@@ -23,7 +23,7 @@ function minify(source, map, uglifyOptions, uglifier) {
 
 function processMessage (msgLocation, callback) {
   try {
-    const messageContents = tmpFile.readm(msgLocation)
+    const messageContents = tmpFile.read(msgLocation)
     const message = JSON.parse(messageContents)
     const source = message.source
     const map = message.map

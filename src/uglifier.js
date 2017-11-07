@@ -17,7 +17,7 @@ function workerCount (options, assetCount) {
 }
 
 function processAssets(compilation, options) {
-  const assetHash = compilation.asset
+  const assetHash = compilation.assets
   const useSourceMaps = options.sourceMap || false
 
   options.test = options.test || /\.js$/i;
@@ -64,7 +64,7 @@ function processAssets(compilation, options) {
                 .catch(performCleanUp)
 }
 
-module.expors = {
+module.exports = {
   processAssets,
   workerCount
 }
